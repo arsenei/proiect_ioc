@@ -1,0 +1,101 @@
+body
+{
+	margin: 0px;
+	text-align: center;
+}
+
+p
+{
+	font-size: 1.5em;
+	font-style:oblique;
+	font-family:"Times New Roman",Georgia,Serif;
+}
+
+.container_div
+{
+  position: relative;
+	margin-left: auto;
+  margin-right: auto;
+	max-width: 1200px;
+  height: 500px;
+}
+
+.header_div
+{
+  position: relative;
+	width: 94%;
+  padding: 3%;
+  height: 15%;
+}
+
+.logo
+{
+  position:relative;
+  margin-right: 80%;
+}
+
+.sidebarLeft_div
+{
+  position: relative;
+	width: 18%;
+	float: left;
+  margin-right: 1%;
+  margin-left: 1%;
+  height: 90%;
+	background-color: #C1D3F9;
+  
+}
+
+.addCloud_button
+{
+  position: relative; 
+  margin-top: 10%;
+  letter-spacing: 2px;
+  text-align: center; 
+  width: 80%;
+  height:6%;
+  background: #FAC77B;
+  border-radius: 20px;
+  box-shadow: 2px 2px 2px #7790C6;
+  color: black;
+}
+
+.addCloud_button:hover, .addCloud_button:active 
+{
+  color: #FFF;
+  background: orange;
+  border: 1px solid #eee;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px #eee;
+}
+
+.addCould_button.span 
+{
+  display: inline-block;
+  position: relative;
+}
+
+.addCloud_button:hover span:after, .addCloud_button:active span:after 
+{
+  transition: opacity 0.8s;
+  opacity: 1;
+}
+
+.yourClouds_div
+{
+  position: relative;
+  border: 1px solid #7790D1;
+  margin-top:10%;
+  margin-left:10%;
+  width: 80%;
+  height:80%;
+  background-color: #7790C6;
+  border-radius: 10px;
+}
+
+.yourClouds_div span
+{
+  position: relative;
+  text-align:center;
+  top: 45%;
+}

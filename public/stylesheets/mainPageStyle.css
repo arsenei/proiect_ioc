@@ -1,0 +1,70 @@
+
+.logout_button
+{
+  position: relative;
+  float: right;
+  display: inline-block;
+  margin-right: 7%;
+  margin-top: -20px;
+  width: 8%;
+  height: 30px;
+  background-color: #DBE4D9;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px #fff;
+  letter-spacing: 2px;
+}
+
+.content_div
+{
+  position: relative;
+	width: 70%;
+  margin-left: 1%;
+  margin-right: 1%;
+  float: left;
+  height: 90%;
+	background-color: #C1D3F9;
+	text-align: justify;
+}
+
+.preview_div {
+  position: relative;
+  width: 80%;
+  height: 35%;
+  margin-left: 5%;
+  margin-top: 5%;
+  background-color: #87D577;
+}
+
+.title_div
+{
+  position: absolute;
+  margin-left: 2%;
+  margin-top: 5%;
+  border: 1px solid #fff;
+}
+
+.deadline_div
+{
+  position: absolute;
+  margin-left: 2%;
+  margin-bottom: 10px;
+  margin-top: 10%;
+  border: 1px solid #fff;
+}
+
+.tags_div
+{
+  position: absolute;
+  margin-left: 2%;
+  margin-top:15%;
+  margin-bottom: 60px;
+  border: 1px solid #fff;
+}
+
+.tags_div, .deadline_div, .title_div
+{
+  width: 60%;
+  height: 20px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px #fff;
+}

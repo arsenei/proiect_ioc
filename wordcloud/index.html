@@ -1,0 +1,171 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+	<title>WordCloud prototype</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<link rel="stylesheet" href="css/style.css">
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+<div id="canvas">
+	<div id="wordcloud"></div>
+	<div id="hiddenwords">
+		<h3>Add word</h3>
+		<input type="text" name="new_word" id="new_word">
+		<input type="submit" value="Add" id="add_new_word">
+		<h3>Hidden words</h3>
+		<ul></ul>
+	</div>
+	<div id="error"><strong>Your browser is not supported.</strong></div>
+</div>
+
+<body>
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/wordcloud2.js"></script>
+
+	<script>
+		wordList = [['Web Technologies', 26],
+								['HTML', 20],
+								['<canvas>', 20],
+								['CSS', 15],
+								['JavaScript', 15],
+								['Document Object Model', 12],
+								['<audio>', 12],
+								['<video>', 12],
+								['Web Workers', 12],
+								['XMLHttpRequest', 12],
+								['SVG', 12],
+								['JSON.parse()', 9],
+								['Geolocation', 9],
+								['data attribute', 9],
+								['transform', 9],
+								['transition', 9],
+								['animation', 9],
+								['setTimeout', 7],
+								['@font-face', 7],
+								['Typed Arrays', 7],
+								['FileReader API', 7],
+								['FormData', 7],
+								['IndexedDB', 7],
+								['getUserMedia()', 7],
+								['postMassage()', 7],
+								['CORS', 7],
+								['strict mode', 6],
+								['calc()', 6],
+								['supports()', 6],
+								['media queries', 6],
+								['full screen', 6],
+								['notification', 6],
+								['orientation', 6],
+								['requestAnimationFrame', 6],
+								['border-radius', 5],
+								['box-sizing', 5],
+								['rgba()', 5],
+								['text-shadow', 5],
+								['box-shadow', 5],
+								['flexbox', 5],
+								['viewpoint', 5]];
+
+		deletedWords = [];
+		for (i = 0; i < wordList.length; i++) {
+			deletedWords[i] = false;
+		}
+
+		wordCloudContainer = $('#wordcloud')[0];
+		hiddenWordsContainer = $('#hiddenwords ul');
+
+		options = {
+			gridSize: 18,
+			weightFactor: 3,
+			click: hideWord
+		}
+
+		if (WordCloud.isSupported) {
+			generateCloud();
+		} else {
+			$('#error').show();
+		}
+
+		function generateCloud() {
+			hiddenWordsContainer.html('');
+
+			validWords = [];
+			for (i = 0; i < wordList.length; i++) {
+				if (!deletedWords[i]) {
+					validWords.push(wordList[i]);
+				} else {
+					liNode = document.createElement('li');
+					liNode.appendChild(document.createTextNode(wordList[i][0]));
+
+					hiddenWordsContainer.append(liNode);
+				}
+			}
+
+			options.list = validWords;
+
+			WordCloud(wordCloudContainer, options);
+		}
+
+		function hideWord(item, dimension, event) {
+			for (i = 0; i < wordList.length; i++) {
+				if (wordList[i][0] == item[0]) {
+					deletedWords[i] = true;
+					break;
+				}
+			}
+
+			generateCloud();
+		}
+
+		function showWord(word) {
+			for (i = 0; i < wordList.length; i++) {
+				if (wordList[i][0] == word) {
+					deletedWords[i] = false;
+					break;
+				}
+			}
+
+			generateCloud();
+		}
+
+		function addWord(word) {
+			wordFound = false;
+			for (i = 0; i < wordList.length; i++) {
+				if (wordList[i][0] == word) {
+					wordList[i][1] = wordList[i][1] + 1;
+					wordFound = true;
+					break;
+				}
+			}
+
+			if(!wordFound) {
+				wordList.push([word, 1]);
+				deletedWords.push(false);
+			}
+
+			generateCloud();
+		}
+
+		$(window).on('resize', function() {
+			generateCloud();
+		})
+
+		hiddenWordsContainer.on('click', 'li', function() {
+			showWord($(this).text());
+		})
+
+		$('#add_new_word').on('click', function() {
+			addWord($('#new_word').val());
+		})
+
+	</script>
+</body>
+</html>

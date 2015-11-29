@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+
+<head>
+  <title>MAIA Project IOC</title>
+  <meta charset="utf-8" />
+  
+  <link rel="stylesheet" href="commonStyle.css" type="text/css" />
+  <link rel="stylesheet" href="style.css" type="text/css" />
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="viewport" content="with=device-widht, initial-scale="1.0" />
+</head>
+	
+	<body>
+		<div id="container" class="container_div">
+			<div id="header" class="header_div">
+        <img src="../img/logo.png" class="logo">
+      </div>
+			<div id="sidebarLeft" class="sidebarLeft_div">
+        <button id="addCloud" class="addCloud_button">
+          <span>+ New Cloud</span>
+        </button>
+        <div id="yourClouds" class="yourClouds_div"><span>Your Clouds</span></div>
+      </div>
+			<div id="content" class="content_div">
+        <div id="cloudTitle" class="cloudTitle_div"><span>Title</span></div>
+        <div id="canvas">
+          <div id="wordcloud"></div>
+          <div id="hiddenwords">
+            <p>Add Word</p>
+            <input type="text" name="new_word" id="new_word">
+            <input type="submit" id="add_new_word" value="Add">
+            <ul></ul>
+          </div>
+        </div>
+
+        <script src="../scripts/jquery-1.11.3.min.js"></script>
+        <script src="../scripts/wordcloud2.js"></script>
+
+        <script>
+          wordList = [['Web Technologies', 26],
+                      ['HTML', 20],
+                      ['<canvas>', 20],
+                      ['flexbox', 5],
+                      ['viewpoint', 5]];
+
+
+          deletedWords = [];
+          for (i = 0; i < wordList.length; i++) {
+            deletedWords[i] = false;
+          }
+
+          wordCloudContainer = $('#wordcloud')[0];
+          hiddenWordsContainer = $('#hiddenwords ul');
+
+          options = {
+            gridSize: 18,
+            weightFactor: 3,
+            click: hideWord
+          }
+
+          if (WordCloud.isSupported) {
+            generateCloud();
+          } else {
+            $('#error').show();
+          }
+
+          function generateCloud() {
+            hiddenWordsContainer.html('');
+
+            validWords = [];
+            for (i = 0; i < wordList.length; i++) {
+              if (!deletedWords[i]) {
+                validWords.push(wordList[i]);
+              } else {
+                liNode = document.createElement('li');
+                liNode.appendChild(document.createTextNode(wordList[i][0]));
+
+                hiddenWordsContainer.append(liNode);
+              }
+            }
+
+            options.list = validWords;
+
+            WordCloud(wordCloudContainer, options);
+          }
+
+          function hideWord(item, dimension, event) {
+            for (i = 0; i < wordList.length; i++) {
+              if (wordList[i][0] == item[0]) {
+                deletedWords[i] = true;
+                break;
+              }
+            }
+
+            generateCloud();
+          }
+
+          function showWord(word) {
+            for (i = 0; i < wordList.length; i++) {
+              if (wordList[i][0] == word) {
+                deletedWords[i] = false;
+                break;
+              }
+            }
+
+            generateCloud();
+          }
+
+          function addWord(word) {
+            wordFound = false;
+            for (i = 0; i < wordList.length; i++) {
+              if (wordList[i][0] == word) {
+                wordList[i][1] = wordList[i][1] + 1;
+                wordFound = true;
+                break;
+              }
+            }
+
+            if(!wordFound) {
+              wordList.push([word, 1]);
+              deletedWords.push(false);
+            }
+
+            generateCloud();
+          }
+
+          $(window).on('resize', function() {
+            generateCloud();
+          })
+
+          hiddenWordsContainer.on('click', 'li', function() {
+            showWord($(this).text());
+          })
+
+          $('#add_new_word').on('click', function() {
+            addWord($('#new_word').val());
+          })
+        </script>
+      </div>
+      <div id="sideBarRight" class="sidebarRight_div">
+        <div id="deadline" class="deadline_div"><span>Deadline</span></div>
+        <div id="MinWords" class="MinWords_div"><span>MinWords</span></div>
+        <div id="MaxWords" class="MaxWords_div"><span>MaxWords</span></div>
+        <div id="Tags" class="Tags_div"><span>Tags</span></div>
+        <div id="Progress" class="Progress_div"><span>Progress (%)</span></div>
+      </div>
+    </div>
+	</body>	
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+
+<head>
+  <title>MAIA Project IOC</title>
+  <meta charset="utf-8" />
+  
+  <link rel="stylesheet" href="commonStyle.css" type="text/css" />
+  <link rel="stylesheet" href="newCloud.css" type="text/css" />
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="viewport" content="with=device-widht, initial-scale="1.0" />
+  <!-- Load jQuery from Google's CDN -->
+  <!-- Load jQuery UI CSS  -->
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  
+  <!-- Load jQuery JS -->
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <!-- Load jQuery UI Main JS  -->
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  
+  <!-- Load SCRIPT.JS which will create datepicker for input field  -->
+  <script src="../scripts/datePicker.js"></script>
+    
+</head>
+	
+	<body>
+		<div id="container" class="container_div">
+			<div id="header" class="header_div">
+        <img src="../img/logo.png" class="logo">
+      </div>
+			<div id="sidebarLeft" class="sidebarLeft_div">
+        <button id="addCloud" class="addCloud_button">
+          <span>+ New Cloud</span>
+        </button>
+        <div id="yourClouds" class="yourClouds_div"><span>Your Clouds</span></div>
+      </div>
+			<div id="content" class="content_div">
+        <img src="../img/cloud.png" class="cloudImg_class" id="cloudImg"></img>
+        <div class="FormContainer">
+          <form id="newCloudForm" class="newCloudForm_class" method="post" action="" >
+            <input type="text" placeholder="Title" class="inputTitle_class" />
+            <input type="text" placeholder="Deadline" id="inputDeadline_class" />
+            <input type="number" min="1" placeholder="Min Words" class="inputMinWords_class" />
+            <input type="number" min="1" placeholder="Max Words" class="inputMaxWords_class" />
+            <input type="text" placeholder="Tags" class="inputTags_class" />
+            <input id="newCloudSubmit_id" class="newCloudSubmit_class" type="submit" value="SUBMIT">
+          </form>
+        </div>
+    </div>
+	</body>	
+</html>

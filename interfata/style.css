@@ -1,0 +1,198 @@
+body
+{
+	margin: 0px;
+	text-align: center;
+}
+
+p
+{
+	font-size: 1em;
+	font-style:oblique;
+	font-family:"Times New Roman",Georgia,Serif;
+}
+
+.container_div
+{
+  position: relative;
+	margin-left: auto;
+  margin-right: auto;
+	max-width: 1200px;
+  height: 500px;
+}
+
+.header_div
+{
+  position: relative;
+	width: 94%;
+  padding: 3%;
+  height: 15%;
+}
+
+.sidebarLeft_div
+{
+  position: relative;
+	width: 18%;
+	float: left;
+  margin-right: 1%;
+  margin-left: 1%;
+  height: 90%;
+	background-color: #C1D3F9;
+}
+
+.content_div
+{
+  position: relative;
+	width: 58%;
+  margin-left: 1%;
+  margin-right: 1%;
+  float: left;
+  height: 90%;
+	background-color: #C1D3F9;
+	text-align: justify;
+}
+
+.cloudTitle_div
+{
+  position: relative;
+  width: 30%;
+  height: 6%;
+  margin-left: 3%;
+  margin-top:3%;
+  letter-spacing: 2px;
+  border: 2px solid #eee;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px #7790C6;
+}
+
+.cloudTitle_div span
+{
+  position: relative;
+  margin-left: 40%;
+}
+
+#canvas {
+  position: relative;
+  margin-top: 3%;
+	width: 100%;
+	height: 70%;
+  background-color: #C1D3F9;
+  display:inline-block;
+}
+#canvas:after {
+    content:'';
+    display:block;
+    clear: both;
+}
+
+#wordcloud {
+  position: relative;
+  display:inline-block;
+	width: 65%;
+	height: 100%;
+  background-color: #C1D3F9;
+  margin-left: 10px;
+}
+
+#wordcloud span {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    cursor: pointer;
+}
+
+#hiddenwords {
+
+  width: 25%;
+  overflow:auto;
+  margin-right: 2%;
+  display:inline;
+  float:right;
+}
+
+#hiddenwords p
+{
+  text-align:left;
+  margin-bottom: 1%;
+}
+
+#hiddenwords li {
+	cursor: pointer;
+}
+
+#add_new_word
+{
+  letter-spacing: 2px;
+  text-align: center; 
+  background: #FAC77B;
+  border-radius: 10px;
+   border: 2px solid #eee;
+  box-shadow: 2px 2px 2px #7790C6;
+  color: black;
+}
+
+#add_new_word
+{
+  position:relative;
+  margin-top: 5%;
+  width: 50%;
+}
+
+.comments_div
+{
+  position: relative;
+  width: 100%;
+  height:60%;
+  background-color: #FAC77B;
+}
+
+.sidebarRight_div
+{
+  position: relative;
+  width: 18%;
+  margin-left: 1%;
+  margin-right: 1%;
+  height: 90%;
+	float: right;
+	background-color: #C1D3F9;
+}
+
+@import url(http://fonts.googleapis.com/css?family=Nunito:300);
+
+body { font-family: "Nunito", sans-serif; font-size: 24px; }
+a    { text-decoration: none; }
+p    { text-align: center; }
+sup  { font-size: 36px; font-weight: 100; line-height: 55px; }
+
+
+
+.deadline_div, .MinWords_div, .MaxWords_div, .Tags_div, .Progress_div {
+  position: relative;
+  margin-top: 10%;
+  margin-left: 10%;
+  width: 80%;
+  height: 6%;
+  background-color: #BE5454;
+  border: 1px solid 7790D4;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px #7790C6;
+}
+
+.Tags_div
+{
+  height: 46%;
+}
+
+.deadline_div span, .MinWords_div span, .MaxWords_div span, .Tags_div span, .Progress_div span {
+  text-align: center;
+  position: relative;
+  color: black;
+}
+
+.Tags_div span
+{
+  top: 40%;
+}
